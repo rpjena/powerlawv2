@@ -1,0 +1,6 @@
+strategy_code,strategy_label,color,marker
+Q,Systematic Quant,#2166ac,^
+P,Pod Shop / Multi-Manager,#d6604d,o
+M,Global Macro,#4dac26,s
+F,Fundamental Long/Short,#8856a7,D
+A,Activist,#fe9929,*
