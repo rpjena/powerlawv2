@@ -79,11 +79,19 @@ plt.rcParams.update({
 })
 
 # ── Colour / marker palette (matches paper) ───────────────────────────────────
-CMAP = {"Q": "#2166ac", "P": "#d6604d", "H": "#4dac26",
-        "M": "#7b3294", "F": "#b35806", "A": "#542788"}
-MMAP = {"Q": "^", "P": "o", "H": "s", "M": "D", "F": "v", "A": "p"}
-LABEL= {"Q": "Quant", "P": "Pod-shop", "H": "Hybrid",
-        "M": "Macro",  "F": "Fundamental L/S", "A": "Activist"}
+CMAP = {
+    "Q": "#2166ac",  # blue
+    "P": "#d6604d",  # red
+    "M": "#4dac26",  # green
+    "F": "#8856a7",  # purple
+    "A": "#fe9929",  # orange
+    "H": "#878787",  # grey for hybrid
+}
+MMAP = {"Q": "^", "P": "o", "M": "s", "F": "D", "A": "*", "H": "o"}
+LABEL = {
+    "Q": "Syst. Quant", "P": "Pod-shop", "M": "Global Macro",
+    "F": "Fund. L/S", "A": "Activist", "H": "Hybrid"
+}
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -170,7 +178,7 @@ def fit_all_funds(df, B=5000):
         hc  = g["headcount"].values
         strat = g["strategy"].iloc[0]
         aud   = g["audited"].any()
-        sigma = 0.02 if aud else 0.15
+        sigma = 0.15  # conservative bound: noise injection for all funds
         alpha, C, R2, se = ols_loglog(aum, hc)
         if np.isnan(alpha):
             continue
@@ -207,16 +215,22 @@ def predicted_efficiency_fixed_aum(params, ref_aum=50.0):
 # FIGURE FUNCTIONS
 # ══════════════════════════════════════════════════════════════════════════════
 
-def fig1_loglog(df, params, outdir):
+def fig1_loglog(df, params, df_oos, params_oos, outdir):
     """
     Fig 1: Log-log scatter (AUM vs headcount) with per-fund OLS fits.
-    Blue triangles = quant, red circles = pod-shop, green squares = hybrid.
+    Shows all 41 funds (in-sample + OOS).
+    In-sample: grey thin dashed fits, coloured markers.
+    OOS: coloured markers, coloured fits.
+    Legend shows 5 strategy types: Syst. Quant (Q), Pod-shop (P),
+    Global Macro (M), Fund. L/S (F), Activist (A).
     """
     fig, ax = plt.subplots(figsize=(7, 5))
 
-    aum_range = np.logspace(np.log10(df["aum_bn"].min() * 0.8),
-                            np.log10(df["aum_bn"].max() * 1.2), 200)
+    all_aum = pd.concat([df["aum_bn"], df_oos["aum_bn"]])
+    aum_range = np.logspace(np.log10(all_aum.min() * 0.8),
+                            np.log10(all_aum.max() * 1.2), 200)
 
+    # In-sample: grey dashed fits, coloured markers
     for fund, row in params.iterrows():
         g = df[df["fund"] == fund].sort_values("year")
         s = row["strategy"]
@@ -224,7 +238,6 @@ def fig1_loglog(df, params, outdir):
         mk  = MMAP.get(s, "o")
         aud_mask = g["audited"].values
 
-        # Scatter
         ax.scatter(g["aum_bn"][~aud_mask], g["headcount"][~aud_mask],
                    color=col, marker=mk, s=28, alpha=0.75, zorder=3,
                    label=f"_nolegend_")
@@ -233,30 +246,52 @@ def fig1_loglog(df, params, outdir):
                        color=col, marker="*", s=80, zorder=4,
                        edgecolors="k", linewidths=0.5)
 
-        # OLS fit line
+        # In-sample OLS fit: grey thin dashed
         y_fit = row["C"] * aum_range ** row["alpha"]
         mask  = (aum_range >= g["aum_bn"].min() * 0.7) & \
                 (aum_range <= g["aum_bn"].max() * 1.5)
         ax.plot(aum_range[mask], y_fit[mask],
-                color=col, lw=0.9, ls="--", alpha=0.6)
+                color="lightgrey", lw=0.7, ls="--", alpha=0.7)
+
+    # OOS: coloured markers and coloured fits
+    for fund, row in params_oos.iterrows():
+        s = row["strategy"]
+        col = CMAP.get(s, "grey")
+        mk  = MMAP.get(s, "o")
+        g = df_oos[df_oos["fund"] == fund].sort_values("year")
+        if g.empty:
+            continue
+
+        ax.scatter(g["aum_bn"], g["headcount"],
+                   color=col, marker=mk, s=28, alpha=0.75, zorder=4,
+                   label=f"_nolegend_")
+
+        # OOS fit: coloured
+        if np.isfinite(row["alpha"]) and np.isfinite(row["C"]):
+            y_fit = row["C"] * aum_range ** row["alpha"]
+            mask  = (aum_range >= g["aum_bn"].min() * 0.7) & \
+                    (aum_range <= g["aum_bn"].max() * 1.5)
+            ax.plot(aum_range[mask], y_fit[mask],
+                    color=col, lw=0.9, ls="-", alpha=0.5)
 
     ax.set_xscale("log"); ax.set_yscale("log")
     ax.set_xlabel("AUM (USD billion)")
     ax.set_ylabel("Headcount")
-    ax.set_title("Fig 1 — Log-log scatter: headcount vs. AUM\n"
-                 r"($N=92$ obs., 15 funds, 2005–2024)")
+    n_total = len(params) + len(params_oos)
+    ax.set_title(f"Fig 1 — Log-log: all {n_total} funds\n"
+                 r"(headcount vs. AUM, 2005–2024)")
 
     legend_elems = [
-        Line2D([0],[0], marker="^", color="w", markerfacecolor=CMAP["Q"],
-               markersize=8, label="Quant"),
-        Line2D([0],[0], marker="o", color="w", markerfacecolor=CMAP["P"],
-               markersize=8, label="Pod-shop"),
-        Line2D([0],[0], marker="s", color="w", markerfacecolor=CMAP["H"],
-               markersize=8, label="Hybrid"),
+        Line2D([0],[0], marker=MMAP[s], color="w", markerfacecolor=CMAP[s],
+               markersize=8, label=LABEL[s])
+        for s in ["Q", "P", "M", "F", "A"]
+    ] + [
+        Line2D([0],[0], color="lightgrey", ls="--", lw=1.2,
+               label="In-sample fits"),
         Line2D([0],[0], marker="*", color="w", markerfacecolor="grey",
                markersize=10, markeredgecolor="k", label="Audited (Man Group)"),
     ]
-    ax.legend(handles=legend_elems, loc="upper left", framealpha=0.8)
+    ax.legend(handles=legend_elems, loc="upper left", framealpha=0.8, fontsize=7)
     ax.grid(True, which="both", alpha=0.2)
     _save(fig, outdir, "fig1_loglog")
 
@@ -424,13 +459,22 @@ def fig4_residuals(df, params, outdir):
     _save(fig, outdir, "fig4_residuals")
 
 
-def fig5_clusters(params, outdir):
+def fig5_clusters(params, params_oos, outdir):
     """
-    Fig 5: Funds in (alpha_hat, log C_hat) parameter space.
-    Shows bimodal structure without any imposed clustering.
+    Fig 5: Funds in (alpha_hat, log C_hat) parameter space — all 41 funds.
+    In-sample: larger markers with name labels.
+    OOS: smaller markers, no labels.
     """
     fig, ax = plt.subplots(figsize=(7, 5.5))
 
+    # OOS first (background layer)
+    for fund, row in params_oos.dropna(subset=["alpha", "C"]).iterrows():
+        s = row["strategy"]
+        ax.scatter(row["alpha"], np.log(row["C"]),
+                   color=CMAP.get(s, "grey"), marker=MMAP.get(s, "o"),
+                   s=25, zorder=2, alpha=0.55)
+
+    # In-sample on top with labels
     for fund, row in params.iterrows():
         s = row["strategy"]
         ax.scatter(row["alpha"], np.log(row["C"]),
@@ -471,13 +515,15 @@ def fig5_clusters(params, outdir):
                 edgecolor="grey", lw=1.2, ls="--", alpha=0.6)
             ax.add_patch(ell)
 
+    n_total = len(params) + len(params_oos.dropna(subset=["alpha", "C"]))
     ax.set_xlabel(r"Scaling exponent $\hat{\alpha}$")
     ax.set_ylabel(r"$\ln\hat{C}$")
-    ax.set_title(r"Fig 5 — Funds in $(\hat{\alpha},\,\ln\hat{C})$ parameter space")
+    ax.set_title(rf"Fig 5 — $(\hat{{\alpha}},\,\ln\hat{{C}})$ parameter space — {n_total} funds")
+    all_strats = set(params["strategy"].tolist()) | set(params_oos["strategy"].tolist())
     legend_elems = [
         Line2D([0],[0], marker=MMAP[s], color="w", markerfacecolor=CMAP[s],
                markersize=8, label=LABEL[s])
-        for s in ["Q","P","H"] if s in params["strategy"].values]
+        for s in ["Q","P","M","F","A","H"] if s in all_strats]
     ax.legend(handles=legend_elems, loc="upper right")
     ax.grid(True, alpha=0.15)
 
@@ -631,7 +677,7 @@ def fig7_trajectories(df, params, outdir):
             a, C, _, _ = ols_loglog(sub["aum_bn"], sub["headcount"])
             if not np.isfinite(a) or not np.isfinite(C) or C <= 0:
                 continue
-            sigma = 0.02 if full_row.get("audited", False) else 0.15
+            sigma = 0.15  # conservative bound: noise injection for all funds
             ci_lo, ci_hi = bootstrap_ci(
                 sub["aum_bn"], sub["headcount"], B=500, sigma_meas=sigma)
             if (ci_hi - ci_lo) > MAX_CI_WIDTH:
@@ -1019,8 +1065,10 @@ def main():
     print(params_in[[c for c in cols if c in params_in.columns]].round(3)
           .to_string())
 
-    Q = params_in[(params_in["strategy"] == "Q") & ~params_in["weakly_id"]]
-    P = params_in[(params_in["strategy"] == "P") & ~params_in["weakly_id"]]
+    # Primary MW test: all unambiguous Q and P funds (no weakly_id filter)
+    # weakly_id only flags hybrid funds for sensitivity analyses
+    Q = params_in[params_in["strategy"] == "Q"]
+    P = params_in[params_in["strategy"] == "P"]
     if len(Q) >= 2 and len(P) >= 2:
         U, p_mw = stats.mannwhitneyu(Q["alpha"], P["alpha"],
                                      alternative="two-sided")
@@ -1043,11 +1091,11 @@ def main():
     to_run   = args.fig if args.fig else all_figs
     print(f"\nGenerating figures {to_run} → {args.outdir}\n")
 
-    if 1  in to_run: fig1_loglog(df_in, params_in, args.outdir)
+    if 1  in to_run: fig1_loglog(df_in, params_in, df_oos, params_oos, args.outdir)
     if 2  in to_run: fig2_alpha(params_in, args.outdir)
     if 3  in to_run: fig3_timeseries(df_in, args.outdir)
     if 4  in to_run: fig4_residuals(df_in, params_in, args.outdir)
-    if 5  in to_run: fig5_clusters(params_in, args.outdir)
+    if 5  in to_run: fig5_clusters(params_in, params_oos, args.outdir)
     if 6  in to_run: fig6_cluster_evolution(df_in, params_in, args.outdir)
     if 7  in to_run: fig6b_full_universe(df_in, args.outdir)
     if 8  in to_run: fig7_trajectories(df_in, params_in, args.outdir)
