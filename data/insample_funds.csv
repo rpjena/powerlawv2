@@ -1,0 +1,93 @@
+fund,strategy,year,aum_bn,headcount,source,audited
+D.E. Shaw,Q,2006,6.0,1200,SEC ADV,False
+D.E. Shaw,Q,2008,28.0,1400,SEC ADV,False
+D.E. Shaw,Q,2010,19.0,1300,SEC ADV,False
+D.E. Shaw,Q,2012,25.0,1500,SEC ADV,False
+D.E. Shaw,Q,2014,30.0,1600,SEC ADV,False
+D.E. Shaw,Q,2016,35.0,1700,SEC ADV,False
+D.E. Shaw,Q,2018,47.0,1900,SEC ADV,False
+D.E. Shaw,Q,2020,55.0,2000,SEC ADV,False
+D.E. Shaw,Q,2022,60.0,2300,SEC ADV / Bloomberg,False
+D.E. Shaw,Q,2024,70.0,2600,SEC ADV / Bloomberg,False
+Renaissance Technologies,Q,2005,5.0,200,SEC ADV,False
+Renaissance Technologies,Q,2009,15.0,275,SEC ADV,False
+Renaissance Technologies,Q,2013,25.0,300,SEC ADV,False
+Renaissance Technologies,Q,2017,50.0,300,SEC ADV,False
+Renaissance Technologies,Q,2021,60.0,310,SEC ADV,False
+Renaissance Technologies,Q,2024,55.0,350,SEC ADV / Press,False
+Two Sigma,H,2010,3.0,200,SEC ADV,False
+Two Sigma,H,2012,8.0,400,SEC ADV,False
+Two Sigma,H,2014,18.0,700,SEC ADV,False
+Two Sigma,H,2016,35.0,1200,SEC ADV,False
+Two Sigma,H,2018,52.0,1600,SEC ADV,False
+Two Sigma,H,2020,58.0,1700,SEC ADV,False
+Two Sigma,H,2022,60.0,1800,SEC ADV,False
+Two Sigma,H,2024,66.0,2000,SEC ADV / Bloomberg,False
+AQR Capital,Q,2009,33.0,600,SEC ADV,False
+AQR Capital,Q,2012,80.0,850,SEC ADV,False
+AQR Capital,Q,2015,150.0,1100,SEC ADV / P&I,False
+AQR Capital,Q,2018,226.0,1400,SEC ADV / P&I,False
+AQR Capital,Q,2021,93.0,900,SEC ADV,False
+AQR Capital,Q,2023,90.0,900,SEC ADV / Bloomberg,False
+Man Group,Q,2010,39.0,1209,Man Group Annual Report,True
+Man Group,Q,2012,52.0,1347,Man Group Annual Report,True
+Man Group,Q,2014,52.0,1373,Man Group Annual Report,True
+Man Group,Q,2016,80.8,1473,Man Group Annual Report,True
+Man Group,Q,2018,104.0,1558,Man Group Annual Report,True
+Man Group,Q,2020,113.5,1584,Man Group Annual Report,True
+Man Group,Q,2022,151.7,1741,Man Group Annual Report,True
+Man Group,Q,2024,175.0,1850,Man Group Annual Report,True
+Citadel,H,2006,12.0,900,SEC ADV,False
+Citadel,H,2008,14.0,1000,SEC ADV,False
+Citadel,H,2010,11.0,950,SEC ADV,False
+Citadel,H,2012,13.0,1000,SEC ADV,False
+Citadel,H,2014,25.0,1400,SEC ADV,False
+Citadel,H,2016,26.0,1500,SEC ADV,False
+Citadel,H,2018,32.0,1700,SEC ADV,False
+Citadel,H,2020,35.0,1900,SEC ADV,False
+Citadel,H,2022,52.0,2600,SEC ADV / Bloomberg,False
+Citadel,H,2024,63.0,3100,SEC ADV / Bloomberg,False
+Millennium Management,P,2010,17.0,1600,SEC ADV,False
+Millennium Management,P,2012,22.0,1900,SEC ADV,False
+Millennium Management,P,2014,30.0,2100,SEC ADV,False
+Millennium Management,P,2016,34.0,2200,SEC ADV,False
+Millennium Management,P,2018,39.0,2443,SEC ADV,False
+Millennium Management,P,2020,50.0,3600,SEC ADV,False
+Millennium Management,P,2022,58.0,4600,SEC ADV / Bloomberg,False
+Millennium Management,P,2024,70.0,5400,SEC ADV / Bloomberg,False
+Millennium Management,P,2025,83.0,6000,Press / Hedgeweek,False
+Point72,H,2018,14.0,1200,SEC ADV,False
+Point72,H,2020,18.0,1500,SEC ADV,False
+Point72,H,2022,26.0,1800,SEC ADV,False
+Point72,H,2024,35.0,2200,SEC ADV / Bloomberg,False
+Balyasny,P,2014,4.0,300,SEC ADV,False
+Balyasny,P,2017,8.0,600,SEC ADV,False
+Balyasny,P,2019,12.0,1000,SEC ADV,False
+Balyasny,P,2021,20.0,1600,SEC ADV,False
+Balyasny,P,2023,23.0,2000,SEC ADV / Bloomberg,False
+Balyasny,P,2025,25.0,2200,Press,False
+ExodusPoint,P,2018,4.5,200,SEC ADV,False
+ExodusPoint,P,2020,9.0,500,SEC ADV,False
+ExodusPoint,P,2022,13.0,900,SEC ADV,False
+ExodusPoint,P,2024,15.0,1200,SEC ADV / Bloomberg,False
+SAC Capital,H,2006,12.0,1000,SEC ADV,False
+SAC Capital,H,2008,14.0,1100,SEC ADV,False
+SAC Capital,H,2010,13.5,1100,SEC ADV,False
+SAC Capital,H,2012,15.0,1200,SEC ADV,False
+Bridgewater,H,2008,50.0,900,SEC ADV / P&I,False
+Bridgewater,H,2012,110.0,1300,SEC ADV / P&I,False
+Bridgewater,H,2017,160.0,1600,SEC ADV / P&I,False
+Bridgewater,H,2020,140.0,1500,SEC ADV,False
+Bridgewater,H,2024,97.0,1200,SEC ADV / Bloomberg,False
+Schonfeld Strategic,P,2018,5.0,300,SEC ADV,False
+Schonfeld Strategic,P,2020,10.0,650,SEC ADV,False
+Schonfeld Strategic,P,2022,14.0,1100,SEC ADV,False
+Schonfeld Strategic,P,2024,16.0,1400,SEC ADV / Bloomberg,False
+Verition Fund,P,2018,2.0,120,SEC ADV,False
+Verition Fund,P,2020,4.5,280,SEC ADV,False
+Verition Fund,P,2022,8.0,480,SEC ADV,False
+Verition Fund,P,2024,10.0,620,SEC ADV,False
+Capula Investment,H,2012,6.0,140,SEC ADV,False
+Capula Investment,H,2015,11.0,190,SEC ADV,False
+Capula Investment,H,2019,16.0,250,SEC ADV,False
+Capula Investment,H,2022,20.0,310,SEC ADV / Bloomberg,False

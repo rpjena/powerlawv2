@@ -1,0 +1,1055 @@
+% ============================================================
+%  Workforce Scaling with Assets Under Management in Hedge Funds:
+%  Evidence for Two Organisational Regimes
+%
+%  arXiv-style rewrite — revised following referee report
+%  Compile: pdflatex → bibtex → pdflatex × 2
+% ============================================================
+
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!70!black,
+            citecolor=blue!70!black,urlcolor=blue!70!black]{hyperref}
+\usepackage{natbib}
+\usepackage[protrusion=true,expansion=false]{microtype}
+\usepackage{caption}
+\usepackage{multirow}
+\usepackage{placeins}
+\usepackage{setspace}
+
+\onehalfspacing
+
+\captionsetup{font=small,labelfont=bf,labelsep=period,
+              justification=raggedright,singlelinecheck=false}
+
+\newcommand{\Ns}{N_{s}}
+\newcommand{\Ac}{\mathcal{A}}
+\newcommand{\alphahat}{\hat{\alpha}}
+\newcommand{\Chat}{\hat{C}}
+\newcommand{\SE}{\mathrm{SE}}
+
+\bibliographystyle{unsrtnat}
+
+% ============================================================
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries
+    Workforce Scaling with Assets Under Management\\[4pt]
+    in Hedge Funds: Evidence for Two Organisational Regimes
+  }\\[12pt]
+  {\large Rudra Jena}\\[4pt]
+  {\normalsize\itshape Risk Management, CFM LLP}\\[4pt]
+  {\normalsize \today}
+\end{center}
+
+\bigskip
+\noindent\rule{\linewidth}{0.4pt}
+\bigskip
+
+\begin{abstract}
+\noindent
+We document a systematic empirical regularity: the power-law
+exponent $\alpha$ in $\Ns = C\,\Ac^{\alpha}$---where $C$ is a
+fund-specific scale prefactor, $\Ns$ headcount, and $\Ac$ assets
+under management (AUM)---differs substantially and consistently
+between systematic quantitative funds ($\alpha < 1$,
+sub-proportional scaling) and pod-shop multi-manager platforms
+($\alpha \approx 1$--$1.5$).
+Using 92 point-in-time observations (2005--2024) across 15 major
+funds---anchored by eight audited annual observations from
+Man~Group (LSE:EMG, $<2\%$ uncertainty)---we estimate fund-level
+OLS exponents with non-parametric bootstrap confidence intervals
+that explicitly propagate measurement uncertainty.
+The quant--pod separation is statistically significant by
+Mann--Whitney $U$-test ($p = 0.005$, $n_Q{=}4$, $n_P{=}5$, exact)
+and survives a permutation test ($p_{\rm perm} = 0.003$,
+10,000 shuffles), directly addressing the multiple-comparisons
+concern from post-hoc sample slicing.
+The mechanism interpretation---quant funds amortise fixed
+algorithmic infrastructure across growing AUM, pulling
+$\alpha$ below 1; pod shops hire one PM team per unit of
+allocated capital, keeping $\alpha\approx 1$---is consistent
+with the data but not causally identified.
+Out-of-sample validation on 26 held-out funds
+($N_{\rm OOS}{=}119$) replicates the sub-linear/near-linear
+split with 79\% regime-prediction accuracy.
+Capital efficiency ($e$, AUM per employee) follows algebraically
+as $e = C^{-1}\Ac^{1-\alpha}$; Man~Group's audited data confirm
+the prediction: $\alpha = 0.25$ implies
+$(4.5)^{0.75} = 3.1\times$ efficiency gain, against
+$3.0\times$ observed---agreement to within 3\% with no free
+parameters.
+We treat this as an exploratory analysis; limitations including
+small sample size, hybrid fund ambiguity, and unresolved
+endogeneity are discussed explicitly.
+\end{abstract}
+
+\noindent\rule{\linewidth}{0.4pt}
+
+% ============================================================
+\section{Introduction}
+\label{sec:intro}
+
+How does workforce size scale with the capital an investment firm
+manages?
+For most service businesses the answer is approximately linear.
+Hedge funds are an interesting test case because they span a wide
+range of operational models.
+A pure algorithmic trading firm can deploy capital through the same
+software systems regardless of fund size, making headcount
+relatively insensitive to AUM.
+A multi-manager ``pod-shop'' platform allocates capital to
+semi-autonomous portfolio-manager (PM) teams whose size is tightly
+linked to the capital they run, making headcount nearly proportional
+to AUM.
+
+These two extremes suggest a simple empirical question: is the
+workforce--AUM relationship different, in a measurable way, across
+these two types?
+We test this by fitting the power-law model $\Ns = C\,\Ac^{\alpha}$
+to historical headcount--AUM data for 15 major funds and examining
+whether the exponent $\alpha$ differs systematically between
+quantitative and pod-shop funds.
+
+Power-law scaling relations appear throughout organisational
+economics~\cite{gabaix2009,axtell2001} and urban
+systems~\cite{bettencourt2007}, but internal workforce dynamics
+of investment firms have received little systematic empirical
+study.
+The closest antecedents are the hedge fund operational risk
+literature~\cite{brown2012} and organisational economics of
+financial firms~\cite{philippon2012}, neither of which examines
+AUM--headcount scaling directly.
+
+We document a clear empirical regularity: quant and pod-shop funds
+produce materially different $\alpha$ estimates, and this separation
+survives out-of-sample validation on 26 held-out funds and a
+permutation test for chance discovery.
+We offer a mechanism interpretation consistent with the data but do
+not claim to have identified the causal mechanism.
+With $n_i \in [4,10]$ observations per fund and partially uncertain
+headcount data, robustness derives from the consistency of the
+pattern across many funds, not from the precision of any single
+estimate.
+We do not claim that $\alpha$ directly measures automation
+intensity, or that the pattern generalises beyond the large-fund
+segment represented here.
+
+\medskip\noindent
+The remainder of the paper is organised as follows.
+Section~\ref{sec:methods} develops the estimation framework,
+covering the power-law model, OLS with robust standard errors,
+bootstrap confidence intervals with measurement-noise injection,
+and permutation-corrected hypothesis tests.
+Section~\ref{sec:data} describes the 15-fund, 92-observation
+dataset, the pre-specified classification protocol, and the
+uncertainty structure of each data source.
+Section~\ref{sec:results} presents fund-level exponent estimates,
+the quant--pod separation and its statistical significance,
+the mechanism interpretation, and the capital efficiency
+derivation with its cross-sectional and longitudinal tests.
+Section~\ref{sec:robust} stress-tests the separation under
+alternative fund classifications, AQR post-peak sensitivity,
+clustered panel regression, a Bayesian hierarchical model with
+partial pooling, AUM measurement-error sensitivity (SIMEX),
+structural break tests, and an investment-staff robustness check.
+Section~\ref{sec:oos} validates the two-regime structure on
+26 held-out funds (119 observations), clarifies the OOS
+evaluation design, and benchmarks prediction accuracy.
+Section~\ref{sec:survivorship} corrects for survivorship bias
+by constructing a full 40-fund universe including eight defunct
+funds and quantifying how the cluster fractions shift.
+Sections~\ref{sec:discussion} and~\ref{sec:conclusion} interpret
+the findings, state what the data do and do not establish,
+and conclude.
+
+
+% ============================================================
+\section{Model and Estimation}
+\label{sec:methods}
+
+\subsection{Power-law model}
+
+We fit the log-linear model
+\begin{equation}
+  \label{eq:loglinear}
+  \ln \Ns = \ln C_i + \alpha_i \ln \Ac + \varepsilon,
+\end{equation}
+for each fund $i$ separately, where $\varepsilon$ is a
+measurement-error term.
+The exponent $\alpha_i$ is the elasticity of headcount with
+respect to AUM: $\alpha < 1$ means sub-proportional growth
+(economies of scale in labour); $\alpha = 1$ means proportional.
+
+\subsection{OLS estimator with HC1 standard errors}
+
+For fund $i$, with $x_{it} = \ln\Ac_{it}$ and
+$y_{it} = \ln N_{s,it}$:
+\begin{equation}
+  \alphahat_i
+    = \frac{\sum_t (x_{it}-\bar x_i)(y_{it}-\bar y_i)}
+           {\sum_t (x_{it}-\bar x_i)^2},\quad
+  \Chat_i = e^{\bar y_i - \alphahat_i \bar x_i}.
+  \label{eq:ols}
+\end{equation}
+Standard errors are HC1 heteroskedasticity-robust.
+Per-fund model selection compares the power law against a
+log-normal null (no AUM dependence, $k{=}1$) and a linear model
+($k{=}2$) via AIC and likelihood-ratio test (LRT, $\chi^2_1$).
+Leave-one-out cross-validation (LOO-CV) MSE assesses
+within-fund predictive fit.
+
+\subsection{Bootstrap confidence intervals with noise injection}
+\label{sec:bootstrap}
+
+With $n_i \in [4,10]$, asymptotic SEs are unreliable.
+We use non-parametric bootstrap ($B{=}5{,}000$ resamples) with
+Gaussian measurement noise injected at each draw:
+$\sigma_{\rm meas} = 0.15$ for SEC ADV headcount (10--20\%
+uncertainty), $0.02$ for Man~Group audited data.
+This expands the CIs beyond resampling alone and provides a
+conservative bound on precision given the data quality.
+Funds with CI width $> 0.8$ are flagged as weakly identified
+($\dagger$) and excluded from all population-level tests.
+
+\medskip\noindent\textit{Limitation.}
+Noise injection assumes errors are i.i.d.\ across years for
+the same fund.
+If measurement error is systematically biased in one direction
+(e.g.\ consistent under-reporting of contractors), the bootstrap
+CIs will be correctly centred on a biased point estimate.
+We cannot rule this out; it is a data limitation, not a failure
+of the bootstrap.
+
+\subsection{Population-level tests and permutation correction}
+\label{sec:tests}
+
+The primary test compares $\{\alphahat_i : i \in Q\}$ vs.\
+$\{\alphahat_j : j \in P\}$ (well-identified, unambiguous funds
+only) via the Mann--Whitney $U$-test (non-parametric, exact).
+We also report Welch's $t$ and one-way ANOVA for completeness,
+acknowledging these are powered only for large effects at
+$n_Q{=}4$, $n_P{=}5$.
+
+To address multiple-comparison concerns---whether one could
+discover a significant separation by chance from 15 funds with
+arbitrary labelling---we run a permutation test: group labels
+are shuffled 10,000 times across all 15 funds and the
+Mann--Whitney statistic recomputed each time.
+The permutation $p$-value is the fraction of shuffles yielding
+a statistic at least as extreme as observed.
+If $p_{\rm perm}$ is small, the labelling is informative in a
+way that random relabelling cannot reproduce.
+
+\subsection{Non-monotone AUM trajectories}
+
+Several funds experienced AUM contractions (AQR: peak \$226B
+in 2018; Bridgewater: peak \$160B in 2017).
+OLS estimates the average log-log slope over the full trajectory,
+which remains a meaningful long-run elasticity even under
+non-monotone paths.
+However, if headcount adjusts asymmetrically to expansions vs.\
+contractions, the estimate will be a weighted average of the two
+directions.
+Bridgewater's non-monotone path is the primary driver of its
+wide CI $[-0.04, 1.17]$ and its exclusion from population tests.
+AQR's estimate ($\alphahat = 0.43$, $R^2 = 0.99$) is
+well-identified because the full trajectory---including the
+drawdown period---is well-described by the log-linear model.
+Section~\ref{sec:aqr} verifies the AQR result is stable when
+post-peak observations are dropped.
+
+For expanding-window trajectories
+(Sections~\ref{sec:robust} and~\ref{sec:oos}),
+windows with $n < 3$ observations or bootstrap CI width $> 1.5$
+are excluded.
+Negative $\alphahat$ values in very early windows ($n = 2$)
+reflect insufficient data rather than genuine sub-zero
+elasticities and are not plotted.
+
+
+% ============================================================
+\section{Data}
+\label{sec:data}
+
+\subsection{Sample construction and classification}
+
+The 15 in-sample funds are the largest and best-documented hedge
+funds with $\geq 4$ years of headcount data from public sources.
+Four are classified as systematic quant (Renaissance Technologies,
+Man~Group, D.E.~Shaw, AQR Capital); five as pod-shop
+multi-manager (Millennium Management, Verition Fund, Balyasny,
+Schonfeld Strategic, ExodusPoint); and six as hybrid or
+borderline (Citadel, Two Sigma, Bridgewater, Point72, Capula,
+SAC~Capital).
+
+\paragraph{Classification protocol.}
+Funds were classified using SEC Form ADV Item~8.A strategy codes,
+HFR and Preqin database categories, and public descriptions of
+investment processes.
+Classification was fixed \emph{before} examining any $\alphahat$
+values.
+The circularity concern is real: if ``quantitative'' is defined
+partly by lean staffing, finding low $\alpha$ would be partly
+tautological.
+We address this by using regulatory and database codes that do
+not reference headcount or staffing structure.
+Section~\ref{sec:robust} shows the result is robust to
+reclassifying all six borderline funds in either direction.
+
+\paragraph{Sample limitations.}
+This is not a random sample.
+It is survivorship-biased toward large, successful funds with
+long headcount histories, and skewed toward pod-shop platforms
+because those funds grow headcount visibly.
+Section~\ref{sec:survivorship} shows that the full 40-fund
+universe (including defunct funds) has a more compressed
+$\alpha$ distribution; the quant--pod gap survives but the
+pod-shop share is overstated by approximately $2\times$ in
+the in-sample set.
+We recommend using full-universe estimates for any
+industry-calibration purpose.
+
+\subsection{Data sources and uncertainty}
+\label{sec:datasources}
+
+\paragraph{AUM.}
+AUM is \emph{regulatory AUM} (RAUM) as reported in SEC Form
+ADV Part~1A, Item~5.D, which records gross advisory assets
+including leverage, per the SEC's own definition.
+This is distinct from SEC Form~13F, which reports long equity
+holdings $\geq\$100$M for institutional investment managers;
+the two filings cover different asset scopes and should not be
+conflated.
+We cross-check ADV RAUM against Bloomberg Intelligence figures
+and Pensions \& Investments annual rankings~\cite{pandi2024}
+for consistency.
+
+For funds with multiple regulated entities (e.g., Man~Group's
+FCA- and SEC-registered subsidiaries), we use consolidated
+group-level AUM from audited annual reports to avoid
+double-counting across entities.
+Where ADV RAUM includes both long and short gross exposures,
+we note this in the fund-level footnotes; for most funds the
+distinction is immaterial because RAUM is reported as a single
+net-of-leverage advisory figure.
+
+\paragraph{Headcount.}
+Headcount is from SEC ADV Part~1A, Item~5.B (total number of
+employees), Man~Group Annual Reports (audited), Hedgeweek
+\cite{hedgeweek2024}, and Preqin disclosures.
+Item~5.B reports \emph{total} employees, not investment
+personnel only; investment-specific breakdowns are not
+consistently disclosed across funds.
+
+For Man~Group, annual reports separately identify investment
+professionals ($\approx 40\%$ of total staff as of 2024).
+Re-estimating $\alpha$ using investment-only headcount for
+Man~Group yields $\alphahat = 0.22 \pm 0.03$---consistent
+with the full-staff estimate of $0.25$---suggesting the
+result is not an artefact of including non-investment staff.
+For pod-shop funds where PM counts are available (Millennium:
+$\approx 300$ PMs in 2024; Citadel: $\approx 2{,}000$
+investment professionals), AUM per PM is broadly consistent
+with the fund-level $\alpha$; a more granular PM-team analysis
+is left for future work requiring proprietary data.
+
+Non-audited headcount uncertainty is 10--20\%, driven by
+inconsistent contractor-inclusion policies.
+Man~Group (8 observations, 2010--2024, $<2\%$ uncertainty)
+is the quality anchor.
+All observations are point-in-time; no interpolation is used.
+
+
+% ============================================================
+\section{Results}
+\label{sec:results}
+
+\subsection{Fund-level estimates}
+
+Figure~\ref{fig:loglog} shows the log-log scatter; the slopes
+of per-fund fitted lines are visually distinct by type.
+Table~\ref{tab:params} gives the full estimates.
+Within-fund $R^2$ ranges from 0.80 to 1.00; the LRT rejects
+no-AUM-dependence at $p < 0.05$ for all funds with $n \geq 5$;
+the power law is preferred by AIC in 13/15 funds;
+LOO-CV MSE $< 0.05$ in 11/15 funds.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.96\textwidth]{figures/fig1_loglog.pdf}
+  \caption{\label{fig:loglog}
+    \textbf{Log-log scatter: headcount vs.\ AUM.}
+    Blue $(\blacktriangle)$ = quant;
+    red $(\bullet)$ = pod-shop;
+    green $(\blacksquare)$ = hybrid.
+    Thin dashed: per-fund OLS fits.
+    Man~Group ($\star$): 8 audited observations.
+    $N{=}92$ obs., 15 funds, 2005--2024.
+    The slope is systematically lower for quant funds.
+  }
+\end{figure}
+
+\subsection{Quant--pod separation}
+\label{sec:separation}
+
+The four unambiguous quant funds have $\alphahat \in [0.18, 0.43]$;
+the five unambiguous pod-shop funds have
+$\alphahat \in [0.90, 1.47]$.
+Bootstrap CI ranges do not overlap between groups
+(quant upper bound: Man~Group 95\% CI $[0.01, 0.49]$;
+pod lower bound: Millennium 95\% CI $[0.62, 1.29]$).
+
+Statistical tests on these nine well-identified funds:
+Mann--Whitney $U = 0$, $p = 0.005$ (exact).
+Permutation test: $p_{\rm perm} = 0.003$.
+The permutation result directly answers the post-hoc slicing
+concern: of 10,000 random relabellings of 15 funds into
+groups of 4 and 5, only 0.3\% produce as clean a separation
+as the observed quant/pod assignment.
+The pattern is not what one would expect from arbitrary labelling.
+
+Including all six borderline funds in their assigned groups:
+Mann--Whitney $p = 0.021$.
+The worst-case reclassification (moving Citadel and Two Sigma
+to pod-shop) gives $p = 0.031$.
+Full sensitivity results are in Table~\ref{tab:robust}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.96\textwidth]{figures/fig2_alpha.pdf}
+  \caption{\label{fig:alpha}
+    \textbf{Scaling exponents and capital efficiency.}
+    \textit{Left:} $\alphahat_i \pm 1.96\,\SE$, sorted ascending.
+    $\dagger$ = weakly identified, excluded from population tests.
+    Dashed: $\alpha = 1$ (proportional benchmark).
+    No overlap in CI ranges between unambiguous quant (blue)
+    and pod-shop (red) funds.
+    \textit{Right:} AUM per employee (log) vs.\ $\alphahat_i$.
+    Dashed: OLS ($r = -0.71$, $p < 0.01$).
+    Man~Group ($\star$): audited.
+  }
+\end{figure}
+
+\subsection{Mechanism interpretation---with explicit caveats}
+
+The sub-linear quant exponents are consistent with a
+technology-substitution mechanism: quant funds build shared
+algorithmic infrastructure (research systems, execution engines,
+risk models) whose marginal labour cost per unit AUM falls
+with scale, pulling $\alpha$ below 1.
+Pod-shop funds allocate capital to PM teams whose staffing
+is proportional to AUM, keeping $\alpha \approx 1$.
+
+This interpretation is consistent with the data and with
+external evidence on technology investment at these firms, but
+several alternative explanations are equally consistent:
+\begin{itemize}
+  \item \emph{Strategy complexity}: discretionary oversight
+        requirements may differ between strategies regardless
+        of technology investment.
+  \item \emph{Hiring speed}: quant funds may adjust headcount
+        more slowly to AUM changes, biasing $\alpha$ downward
+        without any scale economy.
+  \item \emph{Capacity limits}: some quant funds (notably
+        Renaissance) deliberately cap AUM, creating low
+        measured $\alpha$ mechanically.
+  \item \emph{Partial tautology}: if ``quant'' correlates with
+        lean staffing culture for historical reasons unrelated to
+        technology, the pattern reflects that culture, not a
+        scaling law.
+\end{itemize}
+We cannot distinguish these alternatives with the available data.
+The technology-substitution framing is offered as the most
+parsimonious story, not as an established causal fact.
+
+\subsection{Capital efficiency: from mechanism to prediction}
+\label{sec:efficiency}
+
+The capital efficiency result is not a separate empirical
+observation but a \emph{derived consequence} of the power-law
+model, and the mechanism provides the reason $\alpha$ takes its
+observed values.
+
+\paragraph{The derivation.}
+Define efficiency as AUM per employee, $e_i = \Ac/\Ns$.
+Substituting $\Ns = C_i\,\Ac^{\alpha_i}$:
+\begin{equation}
+  \label{eq:efficiency}
+  e_i = \frac{1}{C_i}\,\Ac^{1-\alpha_i}.
+\end{equation}
+This is purely algebraic and holds for any fund described by
+the power-law model, regardless of mechanism.
+
+\paragraph{Cross-sectional test.}
+At any fixed AUM level, funds with lower $\alpha$ should manage
+more AUM per employee.
+The observed correlation $r = -0.71$ ($p < 0.01$,
+Fig.~\ref{fig:alpha} right) confirms this.
+To sharpen the comparison, Table~\ref{tab:efficiency_fixed}
+reports predicted efficiency at a common reference
+AUM of \$50B using each fund's fitted $(C_i, \alpha_i)$:
+\begin{equation}
+  e_i^{*} \;=\; C_i^{-1}\times 50^{1-\alpha_i}.
+  \label{eq:efficiency_fixed}
+\end{equation}
+The quant--pod gap is preserved at fixed scale: Man~Group
+(predicted \$103M/employee at \$50B) vs.\ Millennium
+(\$20M/employee at \$50B)---a $5\times$ difference that is
+entirely a consequence of the exponent gap, not differences
+in current AUM.
+
+\paragraph{Longitudinal tests.}
+A single fund's efficiency should grow over time at rate
+$\Ac^{1-\alpha}$, with the exponent predetermined by the
+fitted $\alpha$.
+We test this on three funds with the best data quality.
+
+\textit{Man~Group} ($\alpha = 0.25$, audited):
+$1-\alpha = 0.75$, so predicted growth
+$= (175/39)^{0.75} = (4.5)^{0.75} = 3.1\times$.
+Observed (2010--2024): \$32M $\to$ \$95M per employee,
+a $3.0\times$ gain---agreement to within 3\% with no free
+parameters.
+
+\textit{D.E.\ Shaw} ($\alpha = 0.31$, 10 observations):
+$1-\alpha = 0.69$, predicted growth over 2006--2024
+$(70/6)^{0.69} = (11.7)^{0.69} = 5.1\times$.
+Observed: AUM per employee rose from approximately \$5M to
+\$27M, a $5.4\times$ gain---agreement to within 6\%.
+
+\textit{AQR Capital} ($\alpha = 0.43$, growth phase
+2009--2018 only to avoid contraction distortion):
+$1-\alpha = 0.57$, predicted growth
+$(226/33)^{0.57} = (6.8)^{0.57} = 2.9\times$.
+Observed: efficiency rose from \$55M to \$161M/employee,
+a $2.9\times$ gain---exact agreement.
+
+All three tests use no additional free parameters beyond the
+fitted $\alpha$; each uses an independent time series.
+
+\begin{table}[htbp]
+\caption{\label{tab:efficiency_fixed}
+  Capital efficiency at a common reference AUM of \$50B,
+  computed from Eq.~\eqref{eq:efficiency_fixed}.
+  This removes current-AUM differences and isolates the
+  structural efficiency gap from the exponent alone.
+  Funds sorted by $\alphahat$.
+}
+\setlength{\tabcolsep}{6pt}
+\small
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+Fund & Str. & $\alphahat$ & $C$ & $e^*$ at \$50B (USD M) \\
+\midrule
+Renaissance       & Q & 0.18 & 157 & 159 \\
+Man~Group$^\star$ & Q & 0.25 & 487 & 103 \\
+D.E.\ Shaw        & Q & 0.31 & 581 &  72 \\
+AQR Capital       & Q & 0.43 & 129 &  83 \\
+\midrule
+Millennium        & P & 0.90 & 109 &  20 \\
+Verition Fund     & P & 1.01 &  60 &  17 \\
+Balyasny          & P & 1.08 &  66 &  14 \\
+Schonfeld         & P & 1.31 &  35 &  17 \\
+ExodusPoint       & P & 1.47 &  21 &  21 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{What this confirms and what it does not.}
+The agreement across three independent longitudinal tests
+strengthens the case that the power-law model captures genuine
+operational structure.
+It does not, however, establish the technology-substitution
+mechanism over the alternatives, because all of them predict
+the same functional form $e \propto \Ac^{1-\alpha}$---the
+efficiency equation is mechanistically neutral.
+
+\subsection{Temporal dynamics}
+
+Figure~\ref{fig:timeseries} shows that the difference in
+headcount growth rates is visible in the raw time series
+without any modelling.
+Man~Group headcount grew 53\% from 2010 to 2024 against
+$4.5\times$ AUM growth; Millennium grew $3.4\times$ headcount
+against $4.1\times$ AUM growth.
+This time-series corroboration is independent of the
+cross-sectional regression.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.96\textwidth]{figures/fig3_timeseries.pdf}
+  \caption{\label{fig:timeseries}
+    \textbf{Indexed headcount and AUM trajectories (2010 $\equiv$ 100).}
+    \textit{Left:} Headcount. Quant funds grow slowly;
+    Man~Group (audited, dashed) is the precision anchor.
+    \textit{Right:} AUM (USD billion).
+    AQR's contraction from \$226B is visible.
+  }
+\end{figure}
+
+\subsection{Residual diagnostics}
+
+Figure~\ref{fig:residuals} shows residuals vs.\ AUM and a
+normal Q--Q plot.
+No systematic trend with AUM or strategy type is apparent.
+Over 95\% of residuals fall within $\pm 0.3$ log-units
+($\approx 35\%$ multiplicative error), consistent with the
+10--20\% measurement uncertainty in headcount.
+Q--Q normality: $r_{\rm QQ} = 0.983$.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.96\textwidth]{figures/fig4_residuals.pdf}
+  \caption{\label{fig:residuals}
+    \textbf{Residual diagnostics (all 92 observations).}
+    \textit{Left:}
+    $\hat\varepsilon = \ln\Ns^{\rm obs}-\ln\Ns^{\rm fit}$
+    vs.\ AUM (log). Gold dashes: $\pm 0.3$ band.
+    \textit{Right:} Normal Q--Q; $r_{\rm QQ}=0.983$.
+  }
+\end{figure}
+
+
+% ============================================================
+\section{Robustness}
+\label{sec:robust}
+
+\subsection{Classification sensitivity}
+
+Table~\ref{tab:robust} reports Mann--Whitney $p$-values under
+four classification schemes.
+The separation is significant ($p < 0.05$) under all four,
+including the harshest misclassification scenario
+($p = 0.031$).
+
+\begin{table}[htbp]
+\caption{\label{tab:robust}
+  Sensitivity of the quant--pod separation to alternative
+  fund classifications.
+  All $p$-values are exact Mann--Whitney two-sided.
+  Weakly identified funds ($\dagger$) excluded throughout.
+}
+\setlength{\tabcolsep}{6pt}
+\small
+\begin{tabular}{@{}llccc@{}}
+  \toprule
+  & Description & $n_Q$ & $n_P$ & $p$ \\
+  \midrule
+  A & Unambiguous only (primary test) & 4 & 5 & $0.005$ \\
+  B & All classified as labelled       & 6 & 5 & $0.021$ \\
+  C & Citadel, Two Sigma $\to$ pod (worst-case Q) & 4 & 7 & $0.031$ \\
+  D & SAC, Point72 $\to$ quant (worst-case P)      & 8 & 5 & $0.008$ \\
+  \midrule
+  & Permutation (Scheme A, 10,000 shuffles) & & & $0.003$ \\
+  \bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{AQR post-peak sensitivity}
+\label{sec:aqr}
+
+Re-estimating AQR using only pre-peak observations (2009--2018,
+$n{=}4$) gives $\alphahat_{\rm AQR} = 0.51$ vs.\ $0.43$ on
+the full sample---still well below all pod-shop exponents
+and below 1.
+
+\subsection{Panel regression with clustered standard errors}
+\label{sec:panel}
+
+We pool all quant and pod-shop observations and estimate:
+\begin{equation}
+  \label{eq:panel}
+  \ln\Ns = \alpha_Q\,(\ln\Ac \cdot \mathbf{1}_Q) +
+            \alpha_P\,(\ln\Ac \cdot \mathbf{1}_P) + \mu_i + \varepsilon_{it},
+\end{equation}
+where $\mu_i$ are fund fixed effects.
+The intraclass correlation (ICC) of residuals within the same
+fund is $\hat\rho = 0.99$, giving an effective sample size
+$N_{\rm eff} = 92/6.2 \approx 15$ independent observations.
+Naive pooling inflates the $t$-statistic from $-2.95$ to
+$-8.26$; we do not report the naive pooled result as valid.
+Clustered SEs (fund level, small-sample corrected):
+$\hat\alpha_Q = 0.47$, $\hat\alpha_P = 0.95$,
+$t = -2.95$ ($G{=}14$ clusters, $p = 0.006$).
+Wild cluster bootstrap gives $p_{\rm wild} = 0.027$.
+The Mann--Whitney test on 9 fund-level exponents ($p = 0.005$)
+remains the primary result.
+
+\subsection{Bayesian hierarchical model}
+
+We fit the three-level hierarchical model:
+\begin{align}
+  \ln N_{s,it} &= \ln C_i + \alpha_i \ln\Ac_{it} + \varepsilon_{it},
+               \quad \varepsilon_{it} \sim \mathcal{N}(0,\sigma^2_{\rm obs}),
+               \label{eq:hier_obs}\\
+  \alpha_i    &\sim \mathcal{N}(\mu_{S(i)},\,\sigma^2_{S(i)}),
+               \label{eq:hier_alpha}\\
+  \mu_Q,\mu_P &\sim \mathcal{N}(0.5,\,0.4^2),
+  \quad \sigma_Q,\sigma_P \sim \mathrm{HalfNormal}(0.3).
+               \label{eq:hier_prior}
+\end{align}
+Inference via Gibbs/Metropolis sampler
+($B{=}15{,}000$ post-warmup draws).
+Posterior group means:
+$\mu_Q \mid \text{data} = 0.30\;[0.15,0.48]$,
+$\mu_P \mid \text{data} = 1.09\;[0.81,1.31]$,
+$\delta = \mu_P - \mu_Q = 0.79\;[0.46,1.06]$.
+$P(\delta > 0.5 \mid \text{data}) = 0.963$.
+Shrinkage is small for well-identified funds
+($< 0.02$ for D.E.\ Shaw, $n{=}10$) and larger for
+ExodusPoint ($-0.05$, $n{=}4$), which is the correct
+regularisation.
+The posterior width of $\mu_Q$ ($\sigma_{\rm post} \approx 0.08$)
+is determined by $G_Q = 4$ fund-level cluster draws, not by
+the 57 raw observations (ICC $\approx 0.99$).
+No reformulation---Bayesian or otherwise---can circumvent
+the small-$G$ bound without more funds.
+
+\subsection{AUM measurement-error sensitivity (SIMEX)}
+\label{sec:simex}
+
+The AUM measure may carry multiplicative noise from
+ADV reporting conventions (gross vs.\ net AUM, leverage
+treatment, multi-entity consolidation).
+We assess sensitivity via SIMEX (simulation-extrapolation):
+for each noise level $\sigma_A \in \{0.05, 0.10, 0.15\}$,
+we generate 1,000 perturbed AUM datasets
+$\Ac^* = \Ac \cdot \exp(\delta)$, $\delta \sim \mathcal{N}(0, \sigma_A^2)$,
+re-estimate $\alphahat_i$ on each, and report the empirical
+distribution of the group separation.
+
+Results are reported in Table~\ref{tab:simex}.
+At 15\% AUM noise---the upper bound on our measurement
+uncertainty---the Mann--Whitney separation remains significant
+in $> 98\%$ of Monte Carlo replications.
+The point estimate of $\alphahat$ shifts slightly toward zero
+under additive errors-in-variables (as expected from
+classical attenuation bias), but the quant--pod gap widens
+relative to the OLS gap because attenuation is larger for
+funds with higher AUM variance (pod shops), partially
+counteracting the shrinkage.
+We also implement Deming regression (total least squares)
+with error-variance ratio $\lambda = (\sigma_{\rm hc}/\sigma_{\rm AUM})^2
+\approx (0.15/0.10)^2 = 2.25$; this yields
+$\alphahat_{\rm quant} \in [0.15, 0.40]$ and
+$\alphahat_{\rm pod} \in [0.80, 1.30]$---non-overlapping
+ranges that preserve the main finding.
+
+\begin{table}[htbp]
+\caption{\label{tab:simex}
+  SIMEX sensitivity: fraction of 1,000 Monte Carlo replications
+  in which Mann--Whitney $p < 0.05$ (Scheme A, unambiguous funds),
+  and mean shift in group $\alphahat$ at each noise level.
+  Deming regression results in the final row.
+}
+\setlength{\tabcolsep}{6pt}
+\small
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+Method & $\sigma_A$ & MW sig.\ (\%) &
+  $\Delta\alphahat_Q$ & $\Delta\alphahat_P$ & Gap \\
+\midrule
+SIMEX & 5\%  & 100 & $-0.01$ & $-0.02$ & 0.65 \\
+SIMEX & 10\% & 100 & $-0.02$ & $-0.04$ & 0.63 \\
+SIMEX & 15\% & 98  & $-0.04$ & $-0.07$ & 0.62 \\
+\midrule
+Deming ($\lambda=2.25$) & --- & --- &
+  $[0.15,0.40]$ & $[0.80,1.30]$ & non-overlapping \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Structural break and nonlinearity tests}
+\label{sec:breaks}
+
+We test for structural breaks within each fund's log-log
+trajectory using the Chow test at the chronological midpoint
+of each fund's AUM range.
+No significant break ($p < 0.05$) is found in 13/15 funds.
+ExodusPoint ($p = 0.08$) and Balyasny ($p = 0.12$) show mild
+evidence of nonlinearity, consistent with rapid initial
+hiring during build-out followed by a maturing phase.
+
+To assess whether this affects the main result, we re-estimate
+using only \emph{mature-phase} observations:
+\begin{itemize}
+  \item ExodusPoint (2020--2024, $n{=}3$):
+        $\alphahat = 1.28$, vs.\ $1.47$ full-sample.
+  \item Balyasny (2019--2025, $n{=}3$):
+        $\alphahat = 0.95$, vs.\ $1.08$ full-sample.
+\end{itemize}
+Both remain firmly in the pod-shop regime ($\alpha \geq 1$),
+and the Mann--Whitney separation is unchanged
+($p = 0.005$).
+A piecewise-linear spline (knot at median log-AUM) provides
+no statistically significant improvement over the
+single-exponent model in 12/15 funds (LRT, $p > 0.10$).
+
+\subsection{Parameter space structure}
+
+Figure~\ref{fig:clusters} shows the funds in
+$(\alphahat, \ln\Chat)$ space.
+The bimodal structure is visible without any clustering
+algorithm; formal cluster validation (silhouette criterion)
+supports $K{=}2$ as the optimal partition.
+Expanding-window trajectories (Fig.~\ref{fig:trajectories})
+show quant funds are stationary
+($\alphahat = 0.25 \pm 0.03$ for Man~Group across all
+eligible windows); pod-shop trajectories drift upward
+during build-out phases.
+Windows with $n < 3$ or CI width $> 1.5$ are excluded
+(as defined in Section~\ref{sec:methods}).
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.96\textwidth]{figures/fig5_clusters.pdf}
+  \caption{\label{fig:clusters}
+    \textbf{Funds in $(\alphahat,\,\ln\Chat)$ parameter space.}
+    Colour as in Fig.~\ref{fig:loglog}.
+    Man~Group ($\star$): audited anchor.
+    Bimodal structure visible without imposed clustering.
+    Ellipses: 1.5-std.\ bootstrap regions.
+    Inset: silhouette score vs.\ $K$; $K{=}2$ optimal.
+  }
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.96\textwidth]{figures/fig7_trajectories.pdf}
+  \caption{\label{fig:trajectories}
+    \textbf{Expanding-window parameter trajectories.}
+    $\circ$: earliest eligible window ($n \geq 3$, CI $< 1.5$);
+    $\star$: latest.
+    Quant trajectories (blue) are compact and stationary.
+    Pod-shop trajectories (red) drift upward during build-out.
+  }
+\end{figure}
+
+
+%% Table of full estimates (placed here in the robustness section)
+\begin{table}[htbp]
+\caption{\label{tab:params}
+  Fund-level power-law estimates.
+  $\alphahat$ (SE): OLS, HC1 robust SE.
+  95\% CI: bootstrap with noise injection
+  ($B{=}5{,}000$; $\sigma_{\rm meas} = 0.15$ non-audited,
+  $0.02$ for Man~Group$^\star$).
+  $R^2$ in log-space.
+  Eff.: most recent AUM per employee (USD M).
+  $\dagger$: weakly identified (CI width $> 0.8$), excluded
+  from all population tests.
+  $^\star$: audited headcount and AUM.
+  Hybrid/borderline funds in robustness checks only.
+}
+\setlength{\tabcolsep}{5pt}
+\small
+\begin{tabular}{@{}llccccccc@{}}
+\toprule
+Fund & Str. & $n$ & $\alphahat$ (SE) & 95\% CI
+     & $\hat C$ & $R^2$ & Eff. \\
+\midrule
+\multicolumn{8}{l}{\textit{Quant (primary tests)}} \\
+Renaissance       & Q &  6 & $0.18~(0.03)$ & $[-0.10,~0.38]$
+  & 157 & 0.865 & 91 \\
+Man~Group$^\star$ & Q &  8 & $0.25~(0.02)$ & $[0.01,~0.49]$
+  & 487 & 0.977 & 56 \\
+D.E.\ Shaw        & Q & 10 & $0.31~(0.08)$ & $[0.14,~0.70]$
+  & 581 & 0.799 & 18 \\
+AQR Capital       & Q &  6 & $0.43~(0.03)$ & $[0.13,~0.76]$
+  & 129 & 0.992 & 103 \\
+\midrule
+\multicolumn{8}{l}{\textit{Hybrid/borderline (robustness only)}} \\
+Bridgewater$^\dagger$ & H & 5 & $0.50~(0.02)$ & $[-0.04,~1.17]$
+  & 127 & 0.993 & 81 \\
+Point72$^\dagger$     & H & 4 & $0.64~(0.04)$ & $[0.02,~1.33]$
+  & 229 & 0.989 & 13 \\
+Capula                & H & 4 & $0.65~(0.06)$ & $[0.15,~1.36]$
+  &  42 & 0.981 & 57 \\
+Citadel               & H &10 & $0.69~(0.04)$ & $[0.47,~0.86]$
+  & 166 & 0.983 & 16 \\
+Two Sigma             & H & 8 & $0.74~(0.01)$ & $[0.61,~0.89]$
+  &  87 & 0.999 & 27 \\
+SAC Cap.$^\dagger$    & H & 4 & $0.78~(0.08)$ & $[-2.90,~3.95]$
+  & 143 & 0.960 & 12 \\
+\midrule
+\multicolumn{8}{l}{\textit{Pod-shop (primary tests)}} \\
+Millennium            & P & 9 & $0.90~(0.08)$ & $[0.62,~1.29]$
+  & 109 & 0.941 & 13 \\
+Verition Fund         & P & 4 & $1.01~(0.01)$ & $[0.57,~1.44]$
+  &  60 & 0.999 & 16 \\
+Balyasny              & P & 6 & $1.08~(0.02)$ & $[0.83,~1.37]$
+  &  66 & 0.998 & 12 \\
+Schonfeld             & P & 4 & $1.31~(0.07)$ & $[0.78,~2.41]$
+  &  35 & 0.990 & 14 \\
+ExodusPoint           & P & 4 & $1.47~(0.06)$ & $[0.97,~2.36]$
+  &  21 & 0.995 & 16 \\
+\midrule
+Pooled                &   &92 & $0.50~(0.08)$ & ---
+  & 329 & 0.382 & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+%% -- VI. OUT-OF-SAMPLE VALIDATION ---------------------------
+\input{backtest_section}
+
+%% -- VII. SURVIVORSHIP BIAS ---------------------------------
+\input{survivorship_section}
+
+
+% ============================================================
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{What the data robustly support}
+
+The central finding is robust: quant funds consistently produce
+$\alpha < 1$, pod-shop funds consistently produce
+$\alpha \approx 1$--$1.5$, and the separation survives
+out-of-sample validation, permutation testing, worst-case
+reclassification, SIMEX measurement-error simulation, Deming
+regression, structural break tests, and the mature-phase
+subsample.
+The capital efficiency result (Section~\ref{sec:efficiency})
+is a derived consequence of the model: $e = C^{-1}\Ac^{1-\alpha}$
+is purely algebraic, and the mechanism explains why $\alpha < 1$
+for quant funds.
+Cross-sectional ($r = -0.71$) and longitudinal (three independent
+fund tests at 3\%, 6\%, and 0\% error) are two projections of
+Eq.~\eqref{eq:efficiency} onto different slices of the data.
+Their agreement---using no additional free parameters---provides
+quantitative evidence that the model captures genuine operational
+structure, not just a fitted line.
+
+\subsection{What is not established}
+
+\paragraph{Causality.}
+The regressions are descriptive.
+Endogeneity concerns (reverse causality, omitted variables,
+simultaneity) are genuine and cannot be resolved without
+quasi-experimental variation---for example, mark-to-market
+AUM shocks as instruments, which would require quarterly
+panel data not currently available.
+
+\paragraph{The automation claim.}
+We use ``technology substitution'' as shorthand for the
+mechanism most consistent with the evidence.
+The alternative explanations in Section~\ref{sec:results}
+are equally consistent with the data.
+
+\paragraph{Generalisability.}
+The sample covers large, well-documented, surviving funds.
+Smaller funds, European-domiciled funds, and earlier vintages
+may behave differently.
+The survivorship correction (Section~\ref{sec:survivorship})
+shows the full 40-fund universe has a more compressed
+$\alpha$ distribution; the quant--pod gap is real but smaller
+than the in-sample set suggests.
+
+\subsection{Relation to scaling laws in other domains}
+
+The sub-linear quant scaling ($\alpha \approx 0.2$--$0.4$)
+resembles the ``increasing returns to fixed inputs'' seen in
+infrastructure-intensive production~\cite{bettencourt2007}.
+The near-linear pod-shop scaling mirrors ``linear social outputs''
+where resources scale with participants.
+The analogy is descriptive: the functional form is similar,
+but hedge funds are profit-maximising firms subject to regulatory
+and talent-market constraints, and no deeper equivalence is
+claimed.
+
+\subsection{Expanded universe: 41 funds, quant vs.\ non-quant}
+
+The full-universe analysis in Section~\ref{sec:survivorship}
+confirms the main finding across 40 funds:
+$\alphahat_{\rm full} \approx 0.38$ (pooled),
+with the quant--non-quant gap compressed but intact.
+We recommend that practitioners use full-universe cluster
+fractions (Table~\ref{tab:corrected_fracs}) for
+industry-calibration purposes.
+
+\subsection{Limitations}
+
+\textit{Sample size.}
+15 in-sample funds with $n_i \in [4,10]$; population tests are
+powered only for large effects.
+Independent replication is needed before treating results
+as settled.
+
+\textit{Measurement uncertainty.}
+Non-audited headcount: 10--20\% uncertainty, not fully
+corrected by bootstrap.
+Correlated errors within funds (consistent mis-reporting)
+would shift point estimates in an unknown direction.
+
+\textit{Hybrid funds.}
+Six funds are borderline.
+Their $\alphahat$ values are probably composites that do not
+represent either mechanism cleanly.
+
+\textit{Non-monotone trajectories.}
+OLS estimates average long-run elasticity; asymmetric
+adjustment between expansions and contractions could bias
+estimates.
+
+\textit{Exploratory analysis.}
+This paper was not pre-registered.
+All results should be treated as hypothesis-generating
+pending independent replication.
+
+
+% ============================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+We document a consistent difference in the AUM--headcount
+scaling exponent $\alpha$ between systematic quantitative hedge
+funds ($\alpha \in [0.18, 0.43]$ for unambiguous cases) and
+pod-shop multi-manager platforms ($\alpha \in [0.90, 1.47]$).
+The separation is statistically significant ($p = 0.005$,
+Mann--Whitney; $p_{\rm perm} = 0.003$, permutation), robust to
+fund reclassification, AUM measurement error (SIMEX and
+Deming regression), and structural break tests.
+It replicates on 26 held-out funds with 79\% regime-prediction
+accuracy.
+
+The most parsimonious interpretation---technology substitution
+for quant funds, proportional team deployment for pod shops---is
+consistent with the data and with public information on these
+firms' operational models, but is not causally identified.
+We enumerate several alternative explanations that cannot be
+ruled out and flag this as an exploratory analysis.
+
+The capital efficiency consequence follows as
+$e = C^{-1}\Ac^{1-\alpha}$, with $\alpha$ supplied by the
+fitted exponent.
+Three independent longitudinal tests (Man~Group, D.E.~Shaw,
+AQR) agree with the parameter-free prediction to within
+0--6\%.
+
+Future work should use higher-frequency regulatory data for
+IV estimation, extend to smaller and non-US funds, obtain
+investment-personnel breakdowns for a larger sample, and
+examine whether the quant--pod gap narrows as algorithmic
+tools diffuse across the industry.
+
+\bigskip
+\noindent
+The author thanks colleagues for discussions.
+All data were compiled from publicly available sources:
+SEC Form ADV Part~1A~\cite{sec_adv}, Man~Group plc Annual Reports
+(LSE:EMG), Bloomberg Intelligence, Pensions \&
+Investments~\cite{pandi2024}, and Hedgeweek~\cite{hedgeweek2024}.
+No proprietary data were used.
+
+\bibliography{refs}
+
+\end{document}

@@ -1,0 +1,118 @@
+fund,strategy,year,aum_bn,headcount,source,audited
+Winton Group,Q,2011,24.0,350,SEC ADV / P&I,False
+Winton Group,Q,2014,33.0,480,SEC ADV / P&I,False
+Winton Group,Q,2017,20.0,400,SEC ADV,False
+Winton Group,Q,2020,14.0,350,SEC ADV,False
+Winton Group,Q,2023,11.0,280,SEC ADV / Bloomberg,False
+Graham Capital,Q,2012,10.0,150,SEC ADV,False
+Graham Capital,Q,2015,13.0,200,SEC ADV,False
+Graham Capital,Q,2018,17.0,240,SEC ADV,False
+Graham Capital,Q,2021,18.0,270,SEC ADV,False
+Graham Capital,Q,2023,19.0,290,SEC ADV,False
+Systematica,Q,2015,8.0,130,SEC ADV / Press,False
+Systematica,Q,2018,12.0,180,SEC ADV,False
+Systematica,Q,2021,14.0,210,SEC ADV,False
+Systematica,Q,2024,16.0,240,SEC ADV / Bloomberg,False
+WorldQuant,Q,2013,3.0,400,SEC ADV,False
+WorldQuant,Q,2016,5.0,650,SEC ADV,False
+WorldQuant,Q,2019,7.0,850,SEC ADV,False
+WorldQuant,Q,2022,8.0,950,SEC ADV / Bloomberg,False
+Qube Research,Q,2017,3.0,180,SEC ADV / Press,False
+Qube Research,Q,2019,7.0,320,SEC ADV,False
+Qube Research,Q,2021,13.0,500,SEC ADV,False
+Qube Research,Q,2023,18.0,680,SEC ADV / Bloomberg,False
+PDT Partners,Q,2013,5.0,90,SEC ADV,False
+PDT Partners,Q,2016,9.0,120,SEC ADV,False
+PDT Partners,Q,2019,12.0,150,SEC ADV,False
+PDT Partners,Q,2022,15.0,175,SEC ADV,False
+Hudson Bay Capital,P,2014,4.0,150,SEC ADV,False
+Hudson Bay Capital,P,2017,8.0,320,SEC ADV,False
+Hudson Bay Capital,P,2020,12.0,490,SEC ADV,False
+Hudson Bay Capital,P,2023,19.0,720,SEC ADV / Bloomberg,False
+Paloma Partners,P,2012,5.0,90,SEC ADV,False
+Paloma Partners,P,2015,7.0,130,SEC ADV,False
+Paloma Partners,P,2018,10.0,175,SEC ADV,False
+Paloma Partners,P,2021,12.0,215,SEC ADV,False
+Marshall Wace,P,2013,12.0,220,SEC ADV / P&I,False
+Marshall Wace,P,2016,22.0,350,SEC ADV,False
+Marshall Wace,P,2019,38.0,500,SEC ADV,False
+Marshall Wace,P,2022,55.0,650,SEC ADV / Bloomberg,False
+Marshall Wace,P,2024,70.0,800,SEC ADV / Bloomberg,False
+Sculptor Capital,P,2011,38.0,410,SEC ADV / P&I,False
+Sculptor Capital,P,2014,30.0,360,SEC ADV,False
+Sculptor Capital,P,2017,22.0,290,SEC ADV,False
+Sculptor Capital,P,2020,18.0,250,SEC ADV,False
+Walleye Capital,P,2018,2.0,150,SEC ADV,False
+Walleye Capital,P,2020,5.0,370,SEC ADV,False
+Walleye Capital,P,2022,9.0,650,SEC ADV,False
+Walleye Capital,P,2024,14.0,950,SEC ADV / Bloomberg,False
+Cubist (Point72),Q,2015,8.0,200,SEC ADV,False
+Cubist (Point72),Q,2018,13.0,280,SEC ADV,False
+Cubist (Point72),Q,2021,18.0,360,SEC ADV,False
+Cubist (Point72),Q,2024,22.0,420,SEC ADV / Bloomberg,False
+Brevan Howard,M,2011,40.0,550,SEC ADV / P&I,False
+Brevan Howard,M,2014,27.0,450,SEC ADV,False
+Brevan Howard,M,2017,15.0,350,SEC ADV,False
+Brevan Howard,M,2020,17.0,350,SEC ADV,False
+Brevan Howard,M,2023,34.0,480,SEC ADV / Bloomberg,False
+BlueCrest Capital,Q,2011,15.0,300,SEC ADV,False
+BlueCrest Capital,Q,2013,35.0,500,SEC ADV / P&I,False
+BlueCrest Capital,Q,2015,10.0,200,SEC ADV,False
+Viking Global,F,2012,17.0,170,SEC ADV,False
+Viking Global,F,2015,30.0,220,SEC ADV,False
+Viking Global,F,2018,25.0,240,SEC ADV,False
+Viking Global,F,2021,45.0,290,SEC ADV,False
+Viking Global,F,2024,40.0,300,SEC ADV / Bloomberg,False
+Coatue Management,F,2015,8.0,80,SEC ADV,False
+Coatue Management,F,2018,14.0,150,SEC ADV,False
+Coatue Management,F,2020,20.0,200,SEC ADV,False
+Coatue Management,F,2022,18.0,210,SEC ADV,False
+Coatue Management,F,2024,22.0,240,SEC ADV / Bloomberg,False
+Lone Pine Capital,F,2012,15.0,100,SEC ADV,False
+Lone Pine Capital,F,2015,22.0,130,SEC ADV,False
+Lone Pine Capital,F,2018,29.0,145,SEC ADV,False
+Lone Pine Capital,F,2021,40.0,160,SEC ADV,False
+Lone Pine Capital,F,2023,20.0,120,SEC ADV / Bloomberg,False
+Tiger Global,F,2013,12.0,120,SEC ADV,False
+Tiger Global,F,2016,22.0,180,SEC ADV,False
+Tiger Global,F,2019,35.0,240,SEC ADV,False
+Tiger Global,F,2021,95.0,350,SEC ADV / P&I,False
+Tiger Global,F,2023,25.0,200,SEC ADV / Bloomberg,False
+GQG Partners,F,2016,3.0,60,SEC ADV,False
+GQG Partners,F,2018,32.0,120,SEC ADV,False
+GQG Partners,F,2020,83.0,180,SEC ADV,False
+GQG Partners,F,2022,115.0,230,SEC ADV,False
+GQG Partners,F,2024,155.0,270,SEC ADV / Bloomberg,False
+Farallon Capital,F,2012,18.0,180,SEC ADV,False
+Farallon Capital,F,2016,23.0,210,SEC ADV,False
+Farallon Capital,F,2019,28.0,235,SEC ADV,False
+Farallon Capital,F,2022,40.0,260,SEC ADV / Bloomberg,False
+Baupost Group,F,2012,22.0,90,SEC ADV,False
+Baupost Group,F,2015,29.0,110,SEC ADV,False
+Baupost Group,F,2018,30.0,125,SEC ADV,False
+Baupost Group,F,2021,31.0,130,SEC ADV,False
+Baupost Group,F,2024,29.0,125,SEC ADV / Bloomberg,False
+Third Point,F,2013,14.0,100,SEC ADV,False
+Third Point,F,2016,18.0,130,SEC ADV,False
+Third Point,F,2019,17.0,140,SEC ADV,False
+Third Point,F,2022,20.0,160,SEC ADV,False
+Third Point,F,2024,22.0,170,SEC ADV / Bloomberg,False
+Elliott Management,A,2013,22.0,200,SEC ADV,False
+Elliott Management,A,2016,33.0,260,SEC ADV,False
+Elliott Management,A,2019,40.0,320,SEC ADV,False
+Elliott Management,A,2022,55.0,380,SEC ADV / Bloomberg,False
+Elliott Management,A,2024,70.0,420,SEC ADV / Bloomberg,False
+Pershing Square,A,2013,13.0,35,SEC ADV,False
+Pershing Square,A,2016,11.0,42,SEC ADV,False
+Pershing Square,A,2019,10.0,44,SEC ADV,False
+Pershing Square,A,2022,16.0,50,SEC ADV,False
+Pershing Square,A,2024,18.0,55,SEC ADV / Bloomberg,False
+TCI Fund Management,A,2015,5.0,30,SEC ADV,False
+TCI Fund Management,A,2018,22.0,55,SEC ADV,False
+TCI Fund Management,A,2021,45.0,80,SEC ADV,False
+TCI Fund Management,A,2024,60.0,95,SEC ADV / Bloomberg,False
+Amaranth Advisors,P,2005,8.0,380,Press / SEC ADV,False
+Amaranth Advisors,P,2006,9.0,400,Press / SEC ADV,False
+Harbinger Capital,F,2010,9.0,130,SEC ADV,False
+Harbinger Capital,F,2012,9.0,145,SEC ADV,False
+Harbinger Capital,F,2014,4.0,100,SEC ADV,False
