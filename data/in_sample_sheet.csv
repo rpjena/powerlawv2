@@ -1,158 +1,155 @@
-fund,strategy,year,aum_bn,headcount,source,audited
-AQR Capital,Q,2012,94.32,125,SEC ADV (RAUM),False
-AQR Capital,Q,2013,119.22,128,SEC ADV (RAUM),False
-AQR Capital,Q,2014,164.17,151,SEC ADV (RAUM),False
-AQR Capital,Q,2015,188.63,201,SEC ADV (RAUM),False
-AQR Capital,Q,2016,236.69,302,SEC ADV (RAUM),False
-AQR Capital,Q,2017,243.98,302,SEC ADV (RAUM),False
-AQR Capital,Q,2018,307.72,358,SEC ADV (RAUM),False
-AQR Capital,Q,2019,270.09,438,SEC ADV (RAUM),False
-AQR Capital,Q,2020,248.9,389,SEC ADV (RAUM),False
-AQR Capital,Q,2021,164.44,326,SEC ADV (RAUM),False
-AQR Capital,Q,2022,145.45,299,SEC ADV (RAUM),False
-AQR Capital,Q,2023,120.0,236,SEC ADV (RAUM),False
-AQR Capital,Q,2024,132.54,229,SEC ADV (RAUM),False
-Balyasny,P,2012,9.12,88,SEC ADV (RAUM),False
-Balyasny,P,2013,8.51,115,SEC ADV (RAUM),False
-Balyasny,P,2014,14.49,125,SEC ADV (RAUM),False
-Balyasny,P,2015,29.02,183,SEC ADV (RAUM),False
-Balyasny,P,2016,35.96,241,SEC ADV (RAUM),False
-Balyasny,P,2017,75.06,282,SEC ADV (RAUM),False
-Balyasny,P,2018,127.41,272,SEC ADV (RAUM),False
-Balyasny,P,2019,157.89,241,SEC ADV (RAUM),False
-Balyasny,P,2020,118.43,250,SEC ADV (RAUM),False
-Balyasny,P,2021,160.25,371,SEC ADV (RAUM),False
-Balyasny,P,2022,180.96,479,SEC ADV (RAUM),False
-Balyasny,P,2023,184.42,827,SEC ADV (RAUM),False
-Balyasny,P,2024,248.04,814,SEC ADV (RAUM),False
-Bridgewater,H,2012,153.31,358,SEC ADV (RAUM),False
-Bridgewater,H,2013,183.69,384,SEC ADV (RAUM),False
-Bridgewater,H,2014,196.58,375,SEC ADV (RAUM),False
-Bridgewater,H,2015,219.12,398,SEC ADV (RAUM),False
-Bridgewater,H,2016,212.29,458,SEC ADV (RAUM),False
-Bridgewater,H,2017,239.32,460,SEC ADV (RAUM),False
-Bridgewater,H,2018,239.14,400,SEC ADV (RAUM),False
-Bridgewater,H,2019,234.86,387,SEC ADV (RAUM),False
-Bridgewater,H,2020,235.61,414,SEC ADV (RAUM),False
-Bridgewater,H,2021,223.01,357,SEC ADV (RAUM),False
-Bridgewater,H,2022,235.54,340,SEC ADV (RAUM),False
-Bridgewater,H,2023,196.83,353,SEC ADV (RAUM),False
-Bridgewater,H,2024,171.75,239,SEC ADV (RAUM),False
-Citadel,H,2012,115.21,591,SEC ADV (RAUM),False
-Citadel,H,2013,100.61,760,SEC ADV (RAUM),False
-Citadel,H,2014,141.55,872,SEC ADV (RAUM),False
-Citadel,H,2015,175.85,751,SEC ADV (RAUM),False
-Citadel,H,2016,149.22,907,SEC ADV (RAUM),False
-Citadel,H,2017,152.66,884,SEC ADV (RAUM),False
-Citadel,H,2018,194.19,924,SEC ADV (RAUM),False
-Citadel,H,2019,194.06,920,SEC ADV (RAUM),False
-Citadel,H,2020,234.68,1020,SEC ADV (RAUM),False
-Citadel,H,2021,244.27,1112,SEC ADV (RAUM),False
-Citadel,H,2022,253.35,1202,SEC ADV (RAUM),False
-Citadel,H,2023,339.08,1070,SEC ADV (RAUM),False
-Citadel,H,2024,397.05,1132,SEC ADV (RAUM),False
-D.E. Shaw,Q,2013,64.21,264,SEC ADV (RAUM),False
-D.E. Shaw,Q,2014,81.36,243,SEC ADV (RAUM),False
-D.E. Shaw,Q,2015,84.65,257,SEC ADV (RAUM),False
-D.E. Shaw,Q,2016,85.14,292,SEC ADV (RAUM),False
-D.E. Shaw,Q,2017,81.32,305,SEC ADV (RAUM),False
-D.E. Shaw,Q,2018,80.1,326,SEC ADV (RAUM),False
-D.E. Shaw,Q,2019,77.14,332,SEC ADV (RAUM),False
-D.E. Shaw,Q,2020,82.12,348,SEC ADV (RAUM),False
-D.E. Shaw,Q,2021,111.94,374,SEC ADV (RAUM),False
-D.E. Shaw,Q,2022,128.02,379,SEC ADV (RAUM),False
-D.E. Shaw,Q,2023,109.28,393,SEC ADV (RAUM),False
-D.E. Shaw,Q,2024,120.47,442,SEC ADV (RAUM),False
-ExodusPoint,P,2018,4.35,44,SEC ADV (RAUM),False
-ExodusPoint,P,2019,82.2,85,SEC ADV (RAUM),False
-ExodusPoint,P,2020,90.0,211,SEC ADV (RAUM),False
-ExodusPoint,P,2021,109.62,282,SEC ADV (RAUM),False
-ExodusPoint,P,2022,86.21,349,SEC ADV (RAUM),False
-ExodusPoint,P,2023,90.26,274,SEC ADV (RAUM),False
-ExodusPoint,P,2024,111.94,308,SEC ADV (RAUM),False
-Man Group,Q,2010,39.0,1209,Man Group Annual Report,True
-Man Group,Q,2012,59.0,1406,Man Group Annual Report,True
-Man Group,Q,2013,54.1,1115,Man Group Annual Report,True
-Man Group,Q,2014,72.9,1078,Man Group Annual Report,True
-Man Group,Q,2015,78.7,1230,Man Group Annual Report,True
-Man Group,Q,2016,80.8,1257,Man Group Annual Report,True
-Man Group,Q,2017,109.1,1325,Man Group Annual Report,True
-Man Group,Q,2018,104.0,1435,Man Group Annual Report,True
-Man Group,Q,2019,117.7,1413,Man Group Annual Report,True
-Man Group,Q,2020,123.6,1444,Man Group Annual Report,True
-Man Group,Q,2021,148.6,1426,Man Group Annual Report,True
-Man Group,Q,2022,143.3,1558,Man Group Annual Report,True
-Man Group,Q,2023,167.5,1790,Man Group Annual Report,True
-Man Group,Q,2024,168.6,1777,Man Group Annual Report,True
-Millennium Management,P,2013,198.2,810,SEC ADV (RAUM),False
-Millennium Management,P,2014,156.68,895,SEC ADV (RAUM),False
-Millennium Management,P,2015,181.48,1025,SEC ADV (RAUM),False
-Millennium Management,P,2016,207.88,1075,SEC ADV (RAUM),False
-Millennium Management,P,2017,207.63,1200,SEC ADV (RAUM),False
-Millennium Management,P,2018,199.07,1350,SEC ADV (RAUM),False
-Millennium Management,P,2019,224.57,1620,SEC ADV (RAUM),False
-Millennium Management,P,2020,276.76,1680,SEC ADV (RAUM),False
-Millennium Management,P,2021,295.03,1700,SEC ADV (RAUM),False
-Millennium Management,P,2022,341.0,1990,SEC ADV (RAUM),False
-Millennium Management,P,2023,390.62,2400,SEC ADV (RAUM),False
-Millennium Management,P,2024,505.94,2660,SEC ADV (RAUM),False
-Point72,H,2016,0.1,1,SEC ADV (RAUM),False
-Point72,H,2017,0.11,1,SEC ADV (RAUM),False
-Point72,H,2018,71.31,502,SEC ADV (RAUM),False
-Point72,H,2019,75.15,635,SEC ADV (RAUM),False
-Point72,H,2020,91.33,703,SEC ADV (RAUM),False
-Point72,H,2021,117.54,778,SEC ADV (RAUM),False
-Point72,H,2022,138.46,914,SEC ADV (RAUM),False
-Point72,H,2023,139.91,1085,SEC ADV (RAUM),False
-Point72,H,2024,172.1,1271,SEC ADV (RAUM),False
-Renaissance Technologies,Q,2013,56.44,140,SEC ADV (RAUM),False
-Renaissance Technologies,Q,2014,63.99,140,SEC ADV (RAUM),False
-Renaissance Technologies,Q,2015,65.03,150,SEC ADV (RAUM),False
-Renaissance Technologies,Q,2016,71.84,150,SEC ADV (RAUM),False
-Renaissance Technologies,Q,2017,97.01,150,SEC ADV (RAUM),False
-Renaissance Technologies,Q,2018,130.81,150,SEC ADV (RAUM),False
-Renaissance Technologies,Q,2019,130.94,150,SEC ADV (RAUM),False
-Renaissance Technologies,Q,2020,165.97,150,SEC ADV (RAUM),False
-Renaissance Technologies,Q,2021,130.86,160,SEC ADV (RAUM),False
-Renaissance Technologies,Q,2022,121.85,160,SEC ADV (RAUM),False
-Renaissance Technologies,Q,2023,106.03,160,SEC ADV (RAUM),False
-Renaissance Technologies,Q,2024,89.26,160,SEC ADV (RAUM),False
-SAC Capital,H,2012,43.83,400,SEC ADV (RAUM),False
-SAC Capital,H,2013,50.89,400,SEC ADV (RAUM),False
-SAC Capital,H,2014,0.7,5,SEC ADV (RAUM),False
-SAC Capital,H,2015,0.5,5,SEC ADV (RAUM),False
-SAC Capital,H,2016,0.35,5,SEC ADV (RAUM),False
-Schonfeld Strategic,P,2016,4.02,70,SEC ADV (RAUM),False
-Schonfeld Strategic,P,2017,6.82,24,SEC ADV (RAUM),False
-Schonfeld Strategic,P,2018,8.9,24,SEC ADV (RAUM),False
-Schonfeld Strategic,P,2019,13.02,62,SEC ADV (RAUM),False
-Schonfeld Strategic,P,2020,18.77,162,SEC ADV (RAUM),False
-Schonfeld Strategic,P,2021,22.03,162,SEC ADV (RAUM),False
-Schonfeld Strategic,P,2022,31.86,207,SEC ADV (RAUM),False
-Schonfeld Strategic,P,2023,56.94,310,SEC ADV (RAUM),False
-Schonfeld Strategic,P,2024,91.16,376,SEC ADV (RAUM),False
-Two Sigma,H,2013,21.39,352,SEC ADV (RAUM),False
-Two Sigma,H,2014,34.21,407,SEC ADV (RAUM),False
-Two Sigma,H,2015,40.13,466,SEC ADV (RAUM),False
-Two Sigma,H,2016,44.7,605,SEC ADV (RAUM),False
-Two Sigma,H,2017,49.27,730,SEC ADV (RAUM),False
-Two Sigma,H,2018,58.23,564,SEC ADV (RAUM),False
-Two Sigma,H,2019,61.02,654,SEC ADV (RAUM),False
-Two Sigma,H,2020,66.14,604,SEC ADV (RAUM),False
-Two Sigma,H,2021,68.9,617,SEC ADV (RAUM),False
-Two Sigma,H,2022,81.18,679,SEC ADV (RAUM),False
-Two Sigma,H,2023,70.8,842,SEC ADV (RAUM),False
-Two Sigma,H,2024,83.96,866,SEC ADV (RAUM),False
-Verition Fund,P,2012,0.96,30,SEC ADV (RAUM),False
-Verition Fund,P,2013,1.0,34,SEC ADV (RAUM),False
-Verition Fund,P,2014,1.22,30,SEC ADV (RAUM),False
-Verition Fund,P,2015,1.26,25,SEC ADV (RAUM),False
-Verition Fund,P,2016,1.28,30,SEC ADV (RAUM),False
-Verition Fund,P,2017,1.94,30,SEC ADV (RAUM),False
-Verition Fund,P,2018,2.65,30,SEC ADV (RAUM),False
-Verition Fund,P,2019,3.0,50,SEC ADV (RAUM),False
-Verition Fund,P,2020,5.37,71,SEC ADV (RAUM),False
-Verition Fund,P,2021,11.3,76,SEC ADV (RAUM),False
-Verition Fund,P,2022,30.99,135,SEC ADV (RAUM),False
-Verition Fund,P,2023,43.63,147,SEC ADV (RAUM),False
-Verition Fund,P,2024,107.25,293,SEC ADV (RAUM),False
+fund,strategy,year,aum_bn,headcount,source,audited,flag
+AQR Capital Management,Q,2013,10.27,311,SEC_ADV_BULK,False,OK
+AQR Capital Management,Q,2014,119.22,400,SEC_ADV_BULK,False,OK
+AQR Capital Management,Q,2015,169.96,481,SEC_ADV_BULK,False,OK
+AQR Capital Management,Q,2016,193.87,598,SEC_ADV_BULK,False,OK
+AQR Capital Management,Q,2017,243.98,722,SEC_ADV_BULK,False,OK
+AQR Capital Management,Q,2018,307.72,876,SEC_ADV_BULK,False,OK
+AQR Capital Management,Q,2019,270.09,1018,SEC_ADV_BULK,False,OK
+AQR Capital Management,Q,2020,248.9,928,SEC_ADV_BULK,False,OK
+AQR Capital Management,Q,2021,164.44,711,SEC_ADV_BULK,False,OK
+AQR Capital Management,Q,2022,145.45,649,SEC_ADV_BULK,False,OK
+AQR Capital Management,Q,2023,120.0,566,SEC_ADV_BULK,False,OK
+AQR Capital Management,Q,2024,132.54,573,SEC_ADV_BULK,False,OK
+Balyasny Asset Management,P,2013,7.7,199,SEC_ADV_BULK,False,OK
+Balyasny Asset Management,P,2014,14.49,223,SEC_ADV_BULK,False,OK
+Balyasny Asset Management,P,2015,29.02,287,SEC_ADV_BULK,False,OK
+Balyasny Asset Management,P,2016,35.96,395,SEC_ADV_BULK,False,OK
+Balyasny Asset Management,P,2017,75.06,521,SEC_ADV_BULK,False,OK
+Balyasny Asset Management,P,2018,127.41,645,SEC_ADV_BULK,False,OK
+Balyasny Asset Management,P,2019,157.89,574,SEC_ADV_BULK,False,OK
+Balyasny Asset Management,P,2020,118.43,542,SEC_ADV_BULK,False,OK
+Balyasny Asset Management,P,2021,160.25,699,SEC_ADV_BULK,False,OK
+Balyasny Asset Management,P,2022,180.96,1048,SEC_ADV_BULK,False,OK
+Balyasny Asset Management,P,2023,184.42,1651,SEC_ADV_BULK,False,OK
+Balyasny Asset Management,P,2024,248.04,1857,SEC_ADV_BULK,False,OK
+Bridgewater Associates,H,2013,183.69,1256,SEC_ADV_BULK,False,OK
+Bridgewater Associates,H,2014,196.58,1274,SEC_ADV_BULK,False,OK
+Bridgewater Associates,H,2015,219.12,1379,SEC_ADV_BULK,False,OK
+Bridgewater Associates,H,2016,212.29,1583,SEC_ADV_BULK,False,OK
+Bridgewater Associates,H,2017,239.32,1491,SEC_ADV_BULK,False,OK
+Bridgewater Associates,H,2018,239.14,1549,SEC_ADV_BULK,False,OK
+Bridgewater Associates,H,2019,234.86,1534,SEC_ADV_BULK,False,OK
+Bridgewater Associates,H,2020,235.61,1580,SEC_ADV_BULK,False,OK
+Bridgewater Associates,H,2021,223.01,1251,SEC_ADV_BULK,False,OK
+Bridgewater Associates,H,2022,235.54,1147,SEC_ADV_BULK,False,OK
+Bridgewater Associates,H,2023,196.83,1166,SEC_ADV_BULK,False,OK
+Bridgewater Associates,H,2024,171.75,1196,SEC_ADV_BULK,False,OK
+Citadel Advisors,H,2013,100.61,869,SEC_ADV_BULK,False,OK
+Citadel Advisors,H,2014,141.55,985,SEC_ADV_BULK,False,OK
+Citadel Advisors,H,2015,175.85,979,SEC_ADV_BULK,False,OK
+Citadel Advisors,H,2016,149.22,1151,SEC_ADV_BULK,False,OK
+Citadel Advisors,H,2017,152.66,1468,SEC_ADV_BULK,False,OK
+Citadel Advisors,H,2018,194.19,1665,SEC_ADV_BULK,False,OK
+Citadel Advisors,H,2019,194.06,1736,SEC_ADV_BULK,False,OK
+Citadel Advisors,H,2020,234.68,2055,SEC_ADV_BULK,False,OK
+Citadel Advisors,H,2021,244.03,2375,SEC_ADV_BULK,False,OK
+Citadel Advisors,H,2022,253.35,2630,SEC_ADV_BULK,False,OK
+Citadel Advisors,H,2023,339.08,2823,SEC_ADV_BULK,False,OK
+Citadel Advisors,H,2024,397.05,2932,SEC_ADV_BULK,False,OK
+D.E. Shaw,Q,2013,64.21,488,SEC_ADV_BULK,False,OK
+D.E. Shaw,Q,2014,81.36,441,SEC_ADV_BULK,False,OK
+D.E. Shaw,Q,2015,84.65,461,SEC_ADV_BULK,False,OK
+D.E. Shaw,Q,2016,85.14,435,SEC_ADV_BULK,False,OK
+D.E. Shaw,Q,2017,81.32,473,SEC_ADV_BULK,False,OK
+D.E. Shaw,Q,2018,80.1,521,SEC_ADV_BULK,False,OK
+D.E. Shaw,Q,2019,77.14,576,SEC_ADV_BULK,False,OK
+D.E. Shaw,Q,2020,82.12,628,SEC_ADV_BULK,False,OK
+D.E. Shaw,Q,2021,111.94,699,SEC_ADV_BULK,False,OK
+D.E. Shaw,Q,2022,128.02,705,SEC_ADV_BULK,False,OK
+D.E. Shaw,Q,2023,109.28,759,SEC_ADV_BULK,False,OK
+D.E. Shaw,Q,2024,120.47,879,SEC_ADV_BULK,False,OK
+ExodusPoint Capital Mgmt,P,2018,4.35,93,SEC_ADV_BULK,False,OK
+ExodusPoint Capital Mgmt,P,2019,82.31,203,SEC_ADV_BULK,False,OK
+ExodusPoint Capital Mgmt,P,2020,90.0,432,SEC_ADV_BULK,False,OK
+ExodusPoint Capital Mgmt,P,2021,109.62,564,SEC_ADV_BULK,False,OK
+ExodusPoint Capital Mgmt,P,2022,115.73,688,SEC_ADV_BULK,False,OK
+ExodusPoint Capital Mgmt,P,2023,90.26,615,SEC_ADV_BULK,False,OK
+ExodusPoint Capital Mgmt,P,2024,85.73,662,SEC_ADV_BULK,False,OK
+Man Group (Man Solutions),Q,2010,39.0,1209,Man Group Annual Report,True,OK
+Man Group (Man Solutions),Q,2012,59.0,1406,Man Group Annual Report,True,OK
+Man Group (Man Solutions),Q,2013,54.1,1115,Man Group Annual Report,True,OK
+Man Group (Man Solutions),Q,2014,72.9,1078,Man Group Annual Report,True,OK
+Man Group (Man Solutions),Q,2015,78.7,1230,Man Group Annual Report,True,OK
+Man Group (Man Solutions),Q,2016,80.8,1257,Man Group Annual Report,True,OK
+Man Group (Man Solutions),Q,2017,109.1,1325,Man Group Annual Report,True,OK
+Man Group (Man Solutions),Q,2018,104.0,1435,Man Group Annual Report,True,OK
+Man Group (Man Solutions),Q,2019,117.7,1413,Man Group Annual Report,True,OK
+Man Group (Man Solutions),Q,2020,123.6,1444,Man Group Annual Report,True,OK
+Man Group (Man Solutions),Q,2021,148.6,1426,Man Group Annual Report,True,OK
+Man Group (Man Solutions),Q,2022,143.3,1558,Man Group Annual Report,True,OK
+Man Group (Man Solutions),Q,2023,167.5,1790,Man Group Annual Report,True,OK
+Man Group (Man Solutions),Q,2024,168.6,1777,Man Group Annual Report,True,OK
+Millennium Management,P,2013,198.2,1250,SEC_ADV_BULK,False,OK
+Millennium Management,P,2014,156.68,1425,SEC_ADV_BULK,False,OK
+Millennium Management,P,2015,181.48,1625,SEC_ADV_BULK,False,OK
+Millennium Management,P,2016,207.88,1830,SEC_ADV_BULK,False,OK
+Millennium Management,P,2017,207.63,2140,SEC_ADV_BULK,False,OK
+Millennium Management,P,2018,202.4,2443,SEC_ADV_BULK,False,OK
+Millennium Management,P,2019,224.57,2839,SEC_ADV_BULK,False,OK
+Millennium Management,P,2020,276.76,3035,SEC_ADV_BULK,False,OK
+Millennium Management,P,2021,295.03,3430,SEC_ADV_BULK,False,OK
+Millennium Management,P,2022,341.0,3985,SEC_ADV_BULK,False,OK
+Millennium Management,P,2023,390.62,4810,SEC_ADV_BULK,False,OK
+Millennium Management,P,2024,505.94,5550,SEC_ADV_BULK,False,OK
+Point72 Asset Management,H,2016,0.1,15,SEC_ADV_BULK,False,OK
+Point72 Asset Management,H,2017,0.11,20,SEC_ADV_BULK,False,OK
+Point72 Asset Management,H,2018,71.31,1219,SEC_ADV_BULK,False,OK
+Point72 Asset Management,H,2019,75.15,1356,SEC_ADV_BULK,False,OK
+Point72 Asset Management,H,2020,91.33,1481,SEC_ADV_BULK,False,OK
+Point72 Asset Management,H,2021,117.54,1618,SEC_ADV_BULK,False,OK
+Point72 Asset Management,H,2022,138.46,1846,SEC_ADV_BULK,False,OK
+Point72 Asset Management,H,2023,139.91,2311,SEC_ADV_BULK,False,OK
+Point72 Asset Management,H,2024,172.1,2872,SEC_ADV_BULK,False,OK
+Renaissance Technologies,Q,2013,56.44,280,SEC_ADV_BULK,False,OK
+Renaissance Technologies,Q,2014,63.99,280,SEC_ADV_BULK,False,OK
+Renaissance Technologies,Q,2015,65.03,290,SEC_ADV_BULK,False,OK
+Renaissance Technologies,Q,2016,71.84,290,SEC_ADV_BULK,False,OK
+Renaissance Technologies,Q,2017,97.01,300,SEC_ADV_BULK,False,OK
+Renaissance Technologies,Q,2018,130.81,300,SEC_ADV_BULK,False,OK
+Renaissance Technologies,Q,2019,130.94,310,SEC_ADV_BULK,False,OK
+Renaissance Technologies,Q,2020,165.97,310,SEC_ADV_BULK,False,OK
+Renaissance Technologies,Q,2021,130.86,310,SEC_ADV_BULK,False,OK
+Renaissance Technologies,Q,2022,121.85,310,SEC_ADV_BULK,False,OK
+Renaissance Technologies,Q,2023,106.03,310,SEC_ADV_BULK,False,OK
+Renaissance Technologies,Q,2024,89.26,300,SEC_ADV_BULK,False,OK
+SAC Capital Advisors,H,2012,43.83,900,SEC_ADV_BULK,False,LIMITED_WINDOW(SAC Capital — de-registered 2013)
+SAC Capital Advisors,H,2013,50.89,950,SEC_ADV_BULK,False,LIMITED_WINDOW(SAC Capital — de-registered 2013)
+SAC Capital Advisors,H,2014,41.53,800,SEC_ADV_BULK,False,LIMITED_WINDOW(SAC Capital — de-registered 2013)
+SAC Capital Advisors,H,2015,0.5,10,SEC_ADV_BULK,False,LIMITED_WINDOW(SAC Capital — de-registered 2013)
+SAC Capital Advisors,H,2016,0.35,10,SEC_ADV_BULK,False,LIMITED_WINDOW(SAC Capital — de-registered 2013)
+Schonfeld Strategic Advisors,P,2015,0.0,84,SEC_ADV_BULK,False,RAUM_ZERO
+Schonfeld Strategic Advisors,P,2016,4.02,89,SEC_ADV_BULK,False,OK
+Schonfeld Strategic Advisors,P,2017,6.82,63,SEC_ADV_BULK,False,OK
+Schonfeld Strategic Advisors,P,2018,8.9,77,SEC_ADV_BULK,False,OK
+Schonfeld Strategic Advisors,P,2019,13.02,123,SEC_ADV_BULK,False,OK
+Schonfeld Strategic Advisors,P,2020,18.77,254,SEC_ADV_BULK,False,OK
+Schonfeld Strategic Advisors,P,2021,22.03,430,SEC_ADV_BULK,False,OK
+Schonfeld Strategic Advisors,P,2022,33.08,620,SEC_ADV_BULK,False,OK
+Schonfeld Strategic Advisors,P,2023,56.95,856,SEC_ADV_BULK,False,OK
+Schonfeld Strategic Advisors,P,2024,89.72,952,SEC_ADV_BULK,False,OK
+Two Sigma Investments,H,2013,21.39,503,SEC_ADV_BULK,False,OK
+Two Sigma Investments,H,2014,34.21,586,SEC_ADV_BULK,False,OK
+Two Sigma Investments,H,2015,40.13,708,SEC_ADV_BULK,False,OK
+Two Sigma Investments,H,2016,44.7,856,SEC_ADV_BULK,False,OK
+Two Sigma Investments,H,2017,49.27,1075,SEC_ADV_BULK,False,OK
+Two Sigma Investments,H,2018,58.23,1253,SEC_ADV_BULK,False,OK
+Two Sigma Investments,H,2019,61.02,1434,SEC_ADV_BULK,False,OK
+Two Sigma Investments,H,2020,66.14,1421,SEC_ADV_BULK,False,OK
+Two Sigma Investments,H,2021,68.9,1396,SEC_ADV_BULK,False,OK
+Two Sigma Investments,H,2022,81.18,1454,SEC_ADV_BULK,False,OK
+Two Sigma Investments,H,2023,70.8,1965,SEC_ADV_BULK,False,OK
+Two Sigma Investments,H,2024,83.96,1954,SEC_ADV_BULK,False,OK
+Verition Fund Management,P,2012,0.96,44,SEC_ADV_BULK,False,OK
+Verition Fund Management,P,2013,1.0,50,SEC_ADV_BULK,False,OK
+Verition Fund Management,P,2014,1.22,50,SEC_ADV_BULK,False,OK
+Verition Fund Management,P,2015,1.26,40,SEC_ADV_BULK,False,OK
+Verition Fund Management,P,2016,1.28,49,SEC_ADV_BULK,False,OK
+Verition Fund Management,P,2017,1.76,48,SEC_ADV_BULK,False,OK
+Verition Fund Management,P,2018,1.84,50,SEC_ADV_BULK,False,OK
+Verition Fund Management,P,2019,3.0,77,SEC_ADV_BULK,False,OK
+Verition Fund Management,P,2020,5.37,102,SEC_ADV_BULK,False,OK
+Verition Fund Management,P,2021,11.3,115,SEC_ADV_BULK,False,OK
+Verition Fund Management,P,2022,30.99,220,SEC_ADV_BULK,False,OK
+Verition Fund Management,P,2023,43.63,279,SEC_ADV_BULK,False,OK
+Verition Fund Management,P,2024,107.25,524,SEC_ADV_BULK,False,OK
